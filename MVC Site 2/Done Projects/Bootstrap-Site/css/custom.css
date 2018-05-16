@@ -1,0 +1,23 @@
+/* custom.css */
+
+body{
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+#leftAside, #rightAside{
+    padding-top: 42px;
+}
+
+#pictures{
+    padding-left: 260px;
+}
+
+footer {
+    position: fixed;
+    color:white;
+    left: 45%;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}

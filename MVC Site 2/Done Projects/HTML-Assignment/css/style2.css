@@ -1,0 +1,104 @@
+body{
+    background-color: #333;
+}
+
+#navList{
+    position: relative;
+    left: 280px;
+    top: -40px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkslategray;
+    width: 760px;
+}
+
+header > h1{
+    margin: 0px;
+    color: white;
+}
+
+header{
+    height: 40px;
+    padding: 3px;
+    background-color: darkslategray;
+}
+
+#navList > li{
+    float: left;
+}
+
+#navList a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navList a:hover {
+    background-color: #333;
+}
+
+#info{
+    float: left;
+    color: white;
+    width: 800px;
+}
+
+#topContent{
+    color: white;
+}
+
+#sideList{
+    color: white;
+    float: right;
+}
+
+/*Optional part
+#sideList ul > li{
+    color: royalblue;
+}
+
+#sideList ul > li:nth-of-type(2), #sideList ul > li:nth-of-type(4){
+    color: purple;
+}
+ */
+
+#art1{
+    width: 400px;
+    float: left;
+}
+
+/* 
+Optional part!
+#art1 p:nth-of-type(2){
+    color: blue;
+    font-weight: bold;
+} 
+*/
+
+#art2{
+    width: 400px;
+    float: left;
+}
+
+.container {
+	font-family: sans-serif, Arial, Helvetica;
+	width: 1024px;
+	margin: 0 auto;
+}
+
+footer{
+    clear: both;
+    font-style: italic;
+    font-size: small;
+
+    color: white;
+    background-color: darkslategrey;
+
+    width: 1024px;
+    padding: 15px;
+    text-align: left;
+}
