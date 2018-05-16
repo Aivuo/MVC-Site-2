@@ -91,6 +91,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2.css" />
+    <Content Include="Content\bootstrap2.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Done Projects\Bootstrap-Site\contact.html" />
     <Content Include="Done Projects\Bootstrap-Site\css\bootstrap-grid.css" />
