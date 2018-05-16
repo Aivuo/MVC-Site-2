@@ -22,15 +22,9 @@ namespace MVC_Site_2.Controllers
             return View();
         }
 
-        public ActionResult Stuff()
+        public ActionResult Projects()
         {
             ViewBag.Message = "Stuff gets put here";
-            return View();
-        }
-
-        public ActionResult TheStuff()
-        {
-            ViewBag.Message = "THE stuff gets put here";
             return View();
         }
 
