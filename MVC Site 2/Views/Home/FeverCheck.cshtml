@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "FeverCheck";
+}
+
+<h2>FeverCheck</h2>
+
+<p>Test test</p>
+
+<p>Do I have a fever?</p>
+
+Enter your temperature
+@using(Html.BeginForm())
+{
+   <input type="number" name="temperature" />
+   <input type="submit" />
+}
+
+
+<h4>@ViewBag.haveFever</h4>
+
