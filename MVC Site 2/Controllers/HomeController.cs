@@ -97,5 +97,52 @@ namespace MVC_Site_2.Controllers
             ViewBag.Message = "FeverStuff with temperature";
             return View();
         }
+
+        [HttpGet]
+        public ActionResult GuessingGame()
+        {
+            var rnd = new Random();
+            int guessThisNumber = rnd.Next(1, 100);
+
+            //var guessCorrect = false;
+
+            Session["guessThisNumber"] = guessThisNumber;
+            Session["guessCorrect"] = "false";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GuessingGame(int guess = 0, string guessCorrect = "false")
+        {
+            
+
+            if (guessCorrect == "true")
+            {
+                //Redirect("~/Home/GuessingGame");
+                return RedirectToAction("GuessingGame", new { });
+            }
+
+            guessCorrect = "false";
+            int guessThisNumber = (int)(Session["guessThisNumber"]);
+            string isItCorrect;
+
+            if (guess > guessThisNumber)
+            {
+                isItCorrect = "It's a bit too high.";
+            }
+            else if (guess < guessThisNumber)
+            {
+                isItCorrect = "It's a bit too low.";
+            }
+            else
+            {
+                isItCorrect = "You are right on the money!";
+                guessCorrect = "true";
+            }
+
+            Session["guessCorrect"] = guessCorrect;
+            Session["isItCorrect"] = isItCorrect;
+            return View();
+        }
     }
 }

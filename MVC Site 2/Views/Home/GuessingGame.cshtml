@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "GuessingGame";
+}
+
+<h2>Guessing Game</h2>
+
+
+@{ 
+    @Session["guessThisNumber"]
+    string submitBox = "Submit";
+    string guessIsCorrect = (string)(Session["guessCorrect"]);
+    if (guessIsCorrect == "true")
+    {
+        submitBox = "Play Again!";
+    }
+}
+
+<h4>Guess wich number I am thinking of?</h4>
+@using (Html.BeginForm())
+{
+   <input type="hidden" name="guessCorrect" value="@guessIsCorrect" />
+   <input type="number" name="guess" />
+   <input type="submit" value="@submitBox"/>
+}
+
+<h5>@Session["isItCorrect"]</h5>
