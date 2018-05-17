@@ -16,7 +16,7 @@ namespace MVC_Site_2
             routes.MapRoute(
                 name: "TemperatureCheck",
                 url: "FeverCheck/{temperature}",
-                defaults: new { controller = "Home", action = "FeverCheck", temperature = 37}
+                defaults: new { controller = "Home", action = "FeverCheck"}
                 );
             routes.MapRoute(
                 name: "Default",

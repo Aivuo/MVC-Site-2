@@ -9,9 +9,14 @@
 
 <p>Do I have a fever?</p>
 
-Enter your temperature
+Enter your temperature:
 @using(Html.BeginForm())
 {
+    
+    <input type="radio" name="scale" value="celsius">@:Celsius
+    <input type="radio" name="scale" value="fahrenheit">@:Fahrenheit<br>
+    
+
    <input type="number" name="temperature" />
    <input type="submit" />
 }

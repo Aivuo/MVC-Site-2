@@ -42,29 +42,54 @@ namespace MVC_Site_2.Controllers
         }
 
         [HttpPost]
-        public ActionResult FeverCheck(int temperature)
+        public ActionResult FeverCheck(float temperature = 37, string scale = "celsius")
         {
-            //bool fever = false;
-            //bool hypothermia = false;
             string haveFever;
 
-            if (temperature > 38)
+            if (scale == "celsius")
             {
-                haveFever = "Yes you have a fever.";
-            } else if(temperature > 35)
-            {
-                haveFever = "No, you are perfectly fine.";
-            }
-            else if (temperature > 32)
-            {
-                haveFever = "No but you have a mild case of Hypothermia. Drink something warm and contact a doctor.";
-            }
-            else if (temperature > 28)
-            {
-                haveFever = "You have severe Hypothermia. Get to a doctor now!";
+                if (temperature > 38)
+                {
+                    haveFever = "Yes you have a fever.";
+                }
+                else if (temperature > 35)
+                {
+                    haveFever = "No, you are perfectly fine.";
+                }
+                else if (temperature > 32)
+                {
+                    haveFever = "No but you have a mild case of Hypothermia. Drink something warm and contact a doctor.";
+                }
+                else if (temperature > 28)
+                {
+                    haveFever = "You have severe Hypothermia. Get to a doctor now!";
+                }
+                else
+                {
+                    haveFever = "How did you even write this? You should be unconcious!";
+                } 
             } else
             {
-                haveFever = "How did you even write this? You should be unconcious!";
+                if (temperature > 100)
+                {
+                    haveFever = "Yes you have a fever.";
+                }
+                else if (temperature > 95)
+                {
+                    haveFever = "No, you are perfectly fine.";
+                }
+                else if (temperature > 89)
+                {
+                    haveFever = "No but you have a mild case of Hypothermia. Drink something warm and contact a doctor.";
+                }
+                else if (temperature > 82)
+                {
+                    haveFever = "You have severe Hypothermia. Get to a doctor now!";
+                }
+                else
+                {
+                    haveFever = "How did you even write this? You should be unconcious!";
+                }
             }
 
             ViewBag.haveFever = haveFever;
