@@ -10,13 +10,40 @@ namespace MVC_Site_2.Controllers
     public class PersonController : Controller
     {
         // GET: Person
-        public ActionResult Index(string searchTerm = null)
+        public ActionResult Index(string searchTerm = null, string searchCriteria = null, string alpha = null)
         {
-            
+            IEnumerable<Person> model;
 
-            var model = _persons
-                        .OrderBy(p => p.Id)
-                        .Where(p => searchTerm == null || p.Name.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
+            if (searchCriteria == null || searchCriteria == "Name")
+            {
+                if (alpha == null || alpha == "Descending")
+                {
+                    model = _persons
+                    .OrderByDescending(p => p.Name)
+                    .Where(p => searchTerm == null || p.Name.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
+                }
+                else
+                {
+                    model = _persons
+                            .OrderBy(p => p.Name)
+                            .Where(p => searchTerm == null || p.Name.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+            else
+            {
+                if (alpha == null || alpha == "Descending")
+                {
+                    model = _persons
+                            .OrderByDescending(p => p.City)
+                            .Where(p => searchTerm == null || p.City.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
+                }
+                else
+                {
+                    model = _persons
+                           .OrderBy(p => p.City)
+                           .Where(p => searchTerm == null || p.City.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
+                }
+            }
 
             return View(model);
         }

@@ -6,11 +6,19 @@
 
 <h2>Players</h2>
 
-<form method="get" class="form-inline">
+<form method="get" class="form-check-inline">
     <div class="form-group">
         <input type="search" name="searchTerm" class="form-control"/>
-        <input type="submit" value="Search by name"  class="btn btn-default"/>
     </div>
+    <div class="radio">
+        <label><input type="radio" name="searchCriteria" value="Name" checked/>Name</label>
+        <label><input type="radio" name="searchCriteria" value="City"/>City</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="alpha" value="Ascending" checked/>In alphabetical order</label>
+        <label><input type="radio" name="alpha" value="Descending"/>In revers alphabetical order</label>
+    </div>
+        <input type="submit" value="Search by name"  class="btn btn-default"/>
 </form>
 
 <table class="table">
