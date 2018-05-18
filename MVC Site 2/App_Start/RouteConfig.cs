@@ -19,6 +19,11 @@ namespace MVC_Site_2
                 defaults: new { controller = "Home", action = "FeverCheck"}
                 );
             routes.MapRoute(
+                name: "GuessingGame",
+                url: "GuessingGame/",
+                defaults: new { controller = "Home", action = "GuessingGame" }
+                );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

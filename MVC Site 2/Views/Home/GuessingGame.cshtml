@@ -7,9 +7,9 @@
 
 
 @{ 
-    @Session["guessThisNumber"]
     string submitBox = "Submit";
     string guessIsCorrect = (string)(Session["guessCorrect"]);
+    int numberOfGuesses = (int)(Session["numberOfGuesses"]);
     if (guessIsCorrect == "true")
     {
         submitBox = "Play Again!";
@@ -17,11 +17,19 @@
 }
 
 <h4>Guess wich number I am thinking of?</h4>
+<h4>I am thinking of a number between 1 and 100!</h4>
 @using (Html.BeginForm())
 {
    <input type="hidden" name="guessCorrect" value="@guessIsCorrect" />
-   <input type="number" name="guess" />
+   <input type="hidden" name="numberOfGuesses" value="@numberOfGuesses" />
+   if (guessIsCorrect == "false")
+	{
+		 <input type="number" name="guess" />
+	}
    <input type="submit" value="@submitBox"/>
 }
-
+@if (numberOfGuesses > 0)
+{
+    <h5>You have guessed @numberOfGuesses times.</h5>
+}
 <h5>@Session["isItCorrect"]</h5>

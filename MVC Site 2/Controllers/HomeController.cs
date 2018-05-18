@@ -103,22 +103,23 @@ namespace MVC_Site_2.Controllers
         {
             var rnd = new Random();
             int guessThisNumber = rnd.Next(1, 100);
+            int numberOfGuesses = 0;
 
             //var guessCorrect = false;
 
             Session["guessThisNumber"] = guessThisNumber;
             Session["guessCorrect"] = "false";
+            Session["numberOfGuesses"] = numberOfGuesses;
             return View();
         }
 
         [HttpPost]
-        public ActionResult GuessingGame(int guess = 0, string guessCorrect = "false")
+        public ActionResult GuessingGame(int guess = 0, string guessCorrect = "false", int numberOfGuesses = 0)
         {
             
 
             if (guessCorrect == "true")
             {
-                //Redirect("~/Home/GuessingGame");
                 return RedirectToAction("GuessingGame", new { });
             }
 
@@ -126,13 +127,21 @@ namespace MVC_Site_2.Controllers
             int guessThisNumber = (int)(Session["guessThisNumber"]);
             string isItCorrect;
 
-            if (guess > guessThisNumber)
+            if (guess > guessThisNumber + 10)
             {
                 isItCorrect = "It's a bit too high.";
             }
-            else if (guess < guessThisNumber)
+            else if (guess > guessThisNumber)
+            {
+                isItCorrect = "It's a little bit too high.";
+            }
+            else if (guess < guessThisNumber - 10)
             {
                 isItCorrect = "It's a bit too low.";
+            }
+            else if (guess < guessThisNumber)
+            {
+                isItCorrect = "It's a little bit too low.";
             }
             else
             {
@@ -140,6 +149,9 @@ namespace MVC_Site_2.Controllers
                 guessCorrect = "true";
             }
 
+            numberOfGuesses++;
+
+            Session["numberOfGuesses"] = numberOfGuesses;
             Session["guessCorrect"] = guessCorrect;
             Session["isItCorrect"] = isItCorrect;
             return View();
