@@ -32,4 +32,8 @@
 {
     <h5>You have guessed @numberOfGuesses times.</h5>
 }
-<h5>@Session["isItCorrect"]</h5>
+
+@if (Session["isItCorrect"] != null)
+{
+    <h5>@Session["isItCorrect"]</h5>
+}

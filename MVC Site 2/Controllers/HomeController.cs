@@ -109,6 +109,7 @@ namespace MVC_Site_2.Controllers
 
             Session["guessThisNumber"] = guessThisNumber;
             Session["guessCorrect"] = "false";
+            Session["isItCorrect"] = null;
             Session["numberOfGuesses"] = numberOfGuesses;
             return View();
         }
@@ -116,7 +117,8 @@ namespace MVC_Site_2.Controllers
         [HttpPost]
         public ActionResult GuessingGame(int guess = 0, string guessCorrect = "false", int numberOfGuesses = 0)
         {
-            
+
+            string isItCorrect = null;
 
             if (guessCorrect == "true")
             {
@@ -125,7 +127,7 @@ namespace MVC_Site_2.Controllers
 
             guessCorrect = "false";
             int guessThisNumber = (int)(Session["guessThisNumber"]);
-            string isItCorrect;
+
 
             if (guess > guessThisNumber + 10)
             {

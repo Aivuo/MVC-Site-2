@@ -14,7 +14,12 @@ namespace MVC_Site_2.Controllers
         {
             IEnumerable<Person> model;
 
-            if (searchCriteria == null || searchCriteria == "Name")
+            if (searchTerm == null && searchCriteria == null && alpha == null)
+            {
+                model = _persons
+                        .OrderBy(p => p.Id);
+            }
+            else if (searchCriteria == "Name")
             {
                 if (alpha == null || alpha == "Descending")
                 {
@@ -56,7 +61,7 @@ namespace MVC_Site_2.Controllers
 
         // POST: Person/Create
         [HttpPost]
-        public ActionResult Create(string nameIn, string cityIn, string phoneNumberIn) //FormCollection collection
+        public ActionResult Create(string nameIn, string cityIn, string phoneNumberIn)
         {
             try
             {
@@ -79,47 +84,29 @@ namespace MVC_Site_2.Controllers
             }
         }
 
-        // GET: Person/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: Person/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //Detta ligger bara här för att tittas på. Försökte lösa samma sak på olika sätt.
+        //public PartialViewResult PlayerList(int id)
+        //{
+        //    sätt 1
+        //    var result = PartialView("_Person", _persons.Find(p => p.Id == id));
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //    return PartialView(result);
 
-        // GET: Person/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //    sätt 2
+        //    List<PartialViewResult> result = new List<PartialViewResult>();
+        //    //PartialViewResult result = new;
+        //    foreach (var item in _persons)
+        //    {
 
-        // POST: Person/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        result.Add(PartialView("_Person", item));
+        //    }
+
+        //    sätt 3
+        //    var result = _persons.Find(p => p.Id == id);
+        //}
+
+
 
         static List<Person> _persons = new List<Person>
         {
