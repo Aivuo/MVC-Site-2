@@ -69,3 +69,5 @@ C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.cspro
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.csproj.CopyComplete
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.dll
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.pdb
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\roslyn\System.IO.Pipes.AccessControl.dll
