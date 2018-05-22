@@ -6,7 +6,7 @@
 
 <h2>Players</h2>
 
-<form method="get" class="form-check-inline">
+@*<form method="get" class="form-check-inline">
     <div class="form-group">
         <input type="search" name="searchTerm" class="form-control"/>
     </div>
@@ -19,14 +19,37 @@
         <label><input type="radio" name="alpha" value="Descending"/>In reverse alphabetical order</label>
     </div>
         <input type="submit" value="Search by name"  class="btn btn-default"/>
-</form>
+</form>*@
 
-
-
-@foreach (var item in Model)
+@using (Ajax.BeginForm(new AjaxOptions
 {
-    @Html.Partial("_Person", item)
+    HttpMethod = "post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "peopleList"
+}))
+{
+    <div class="form-group">
+        <input type="search" name="searchTerm" class="form-control"/>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="searchCriteria" value="Name" checked/>Name</label>
+        <label><input type="radio" name="searchCriteria" value="City"/>City</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="alpha" value="Ascending" checked/>In alphabetical order</label>
+        <label><input type="radio" name="alpha" value="Descending"/>In reverse alphabetical order</label>
+    </div>
+        <input type="submit" value="Search by name"  class="btn btn-default"/>
 }
+
+@Html.Partial("_Person", Model)
+
+@*<div id="peopleList">
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_Person", item)
+    }
+</div>*@
 
 
 @using (Html.BeginForm("Create", "Person"))

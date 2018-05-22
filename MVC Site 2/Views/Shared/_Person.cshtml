@@ -1,6 +1,32 @@
-﻿@model MVC_Site_2.Models.Person
+﻿@model IEnumerable<MVC_Site_2.Models.Person>
 
-<h3 class="bg-primary">@Model.Name</h3>
-<span>@Model.City</span><br />
-<span>@Model.PhoneNumber</span><br />
-<hr />
+<div id="peopleList">
+    @{
+
+        foreach (var item in Model)
+        {
+            <div id="@item.Id">
+                <h3 class="bg-primary">@item.Name</h3>
+                <span>@item.City</span><br />
+                <span>@item.PhoneNumber @item.Id</span><br />
+
+                @using (Ajax.BeginForm("Edit", new AjaxOptions()
+                {
+                    HttpMethod = "get",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = item.Id.ToString()
+                }))
+                {
+                    <input type="submit" value="Edit" class="btn btn-default btn-sm" />
+
+                }
+                <hr />
+
+
+            </div>
+        }
+    }
+
+
+
+</div>

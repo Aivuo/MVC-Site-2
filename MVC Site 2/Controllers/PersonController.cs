@@ -50,9 +50,25 @@ namespace MVC_Site_2.Controllers
                 }
             }
 
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Person", model);
+            }
+
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            return PartialView("_Edit");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(string nameIn, string cityIn, string phoneNumberIn)
+        {
+            return View();
+        }
         // GET: Person/Create
         public ActionResult Create()
         {

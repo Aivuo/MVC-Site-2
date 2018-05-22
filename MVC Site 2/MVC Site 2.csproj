@@ -430,6 +430,7 @@
     <Content Include="Views\Shared\_Person.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Shared\_Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -439,6 +440,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Img\" />
     <Folder Include="Done Projects\Bootstrap-Site\.git\lfs\objects\logs\" />
     <Folder Include="Done Projects\Bootstrap-Site\.git\lfs\tmp\objects\" />
     <Folder Include="Done Projects\Bootstrap-Site\.git\objects\info\" />
