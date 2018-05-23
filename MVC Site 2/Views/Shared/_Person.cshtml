@@ -20,6 +20,26 @@
                     <input type="submit" value="Edit" class="btn btn-default btn-sm" />
 
                 }
+                @using (Ajax.BeginForm("Delete", new AjaxOptions()
+                {
+                    HttpMethod = "post",
+                    InsertionMode = InsertionMode.ReplaceWith,
+                    UpdateTargetId = "peopleList"
+                }))
+                {
+                    <input type="hidden" name="idIn" value="@item.Id" />
+                    <input type="submit" value="Delete" class="btn btn-default btn-sm" />
+
+                }
+
+                @*@using (Ajax.ActionLink("Delete", "Delete", new AjaxOptions()
+                    {
+                        HttpMethod = "post",
+                        UpdateTargetId = item.Id.ToString()
+                    }))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-default btn-sm" />
+                    }*@
                 <hr />
 
 

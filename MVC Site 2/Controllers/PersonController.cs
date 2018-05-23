@@ -100,7 +100,13 @@ namespace MVC_Site_2.Controllers
             }
         }
 
+        public ActionResult Delete(int idIn)
+        {
+            var person = _persons.Find(p => p.Id == idIn);
+            _persons.Remove(person);
 
+            return RedirectToAction("Index");
+        }
         //Detta ligger bara här för att tittas på. Försökte lösa samma sak på olika sätt.
         //public PartialViewResult PlayerList(int id)
         //{
