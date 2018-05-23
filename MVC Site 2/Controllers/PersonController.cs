@@ -58,22 +58,30 @@ namespace MVC_Site_2.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public ActionResult Edit(int idIn)
+        public ActionResult Change()
         {
-            var person = _persons.Find(p => p.Id == idIn);
+            return PartialView("_Change");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int Id)
+        {
+            var person = _persons.Find(p => p.Id == Id);
 
             return PartialView("_Edit", person);
         }
 
         [HttpPost]
-        public ActionResult Edit(string nameIn, string phoneNumberIn, string cityIn, int idIn)
+        public ActionResult Edit(Person personIn)
         {
-            var person = _persons.Find(p => p.Id == idIn);
+            if (ModelState.IsValid)
+            {
+                var person = _persons.Find(p => p.Id == personIn.Id);
 
-            person.Name = nameIn;
-            person.City = cityIn;
-            person.PhoneNumber = phoneNumberIn;
+                person.Name = personIn.Name;
+                person.City = personIn.City;
+                person.PhoneNumber = personIn.PhoneNumber; 
+            }
 
             return RedirectToAction("Index");
         }
@@ -85,20 +93,26 @@ namespace MVC_Site_2.Controllers
 
         // POST: Person/Create
         [HttpPost]
-        public ActionResult Create(string nameIn, string cityIn, string phoneNumberIn)
+        public ActionResult Create(Person person)
         {
             try
             {
-                var p = _persons.Last();
-
-
-                _persons.Add(new Person
+                if (ModelState.IsValid)
                 {
-                    Id = p.Id + 1,
-                    Name = nameIn,
-                    City = cityIn,
-                    PhoneNumber = phoneNumberIn
-                });
+                    var p = _persons.Last();
+                    person.Id = p.Id + 1;
+                    _persons.Add(person);
+                    //var p = _persons.Last();
+
+
+                    //_persons.Add(new Person
+                    //{
+                    //    Id = p.Id + 1,
+                    //    Name = person.Name,
+                    //    City = person.City,
+                    //    PhoneNumber = person.PhoneNumber
+                    //}); 
+                }
 
                 return RedirectToAction("Index");
             }
@@ -108,9 +122,9 @@ namespace MVC_Site_2.Controllers
             }
         }
 
-        public ActionResult Delete(int idIn)
+        public ActionResult Delete(int Id)
         {
-            var person = _persons.Find(p => p.Id == idIn);
+            var person = _persons.Find(p => p.Id == Id);
             _persons.Remove(person);
 
             return RedirectToAction("Index");

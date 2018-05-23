@@ -10,39 +10,47 @@
                 <div class="well">
                     <span class="textPresent"><strong>Home City:</strong> @item.City</span><br />
                     <span class="textPresent"><strong>Phone Nmb:</strong> @item.PhoneNumber</span><br />
+                    <span class="textPresent"><strong>Id:</strong> @item.Id</span><br />
+
+                    @*Funkar men är inte lika snyggt som Ajax.BeginForm*@
+                    @*@Ajax.ActionLink("EditAction", "Edit", new { Id = item.Id }, new AjaxOptions()
+                        {
+                            HttpMethod = "get",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = item.Id.ToString(),
+                        })
+
+                        @Ajax.ActionLink("DeleteAction", "Delete", new { Id = item.Id }, new AjaxOptions()
+                        {
+                            HttpMethod = "get",
+                            InsertionMode = InsertionMode.ReplaceWith,
+                            UpdateTargetId = "peopleList",
+                        })*@
+
+
+                            @using (Ajax.BeginForm("Edit", new AjaxOptions()
+                            {
+                                HttpMethod = "get",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = item.Id.ToString()
+                            }))
+                            {
+                                <input type="hidden" name="Id" value="@item.Id" />
+                                <input type="submit" value="Edit" class="btn btn-default btn-sm" />
+
+                            }
+                            @using (Ajax.BeginForm("Delete", new AjaxOptions()
+                            {
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.ReplaceWith,
+                                UpdateTargetId = "peopleList"
+                            }))
+                            {
+                                <input type="hidden" name="Id" value="@item.Id" />
+                                <input type="submit" value="Delete" class="btn btn-default btn-sm" />
+
+                            }
                 </div>
-
-                @using (Ajax.BeginForm("Edit", new AjaxOptions()
-                {
-                    HttpMethod = "get",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = item.Id.ToString()
-                }))
-                {
-                    <input type="hidden" name="idIn" value="@item.Id" />
-                    <input type="submit" value="Edit" class="btn btn-default btn-sm" />
-
-                }
-                @using (Ajax.BeginForm("Delete", new AjaxOptions()
-                {
-                    HttpMethod = "post",
-                    InsertionMode = InsertionMode.ReplaceWith,
-                    UpdateTargetId = "peopleList"
-                }))
-                {
-                    <input type="hidden" name="idIn" value="@item.Id" />
-                    <input type="submit" value="Delete" class="btn btn-default btn-sm" />
-
-                }
-
-                @*@using (Ajax.ActionLink("Delete", "Delete", new AjaxOptions()
-                    {
-                        HttpMethod = "post",
-                        UpdateTargetId = item.Id.ToString()
-                    }))
-                    {
-                        <input type="submit" value="Delete" class="btn btn-default btn-sm" />
-                    }*@
                 <hr />
 
 
