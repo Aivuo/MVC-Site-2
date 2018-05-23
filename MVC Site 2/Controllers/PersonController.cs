@@ -59,15 +59,23 @@ namespace MVC_Site_2.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int idIn)
         {
-            return PartialView("_Edit");
+            var person = _persons.Find(p => p.Id == idIn);
+
+            return PartialView("_Edit", person);
         }
 
         [HttpPost]
-        public ActionResult Edit(string nameIn, string cityIn, string phoneNumberIn)
+        public ActionResult Edit(string nameIn, string phoneNumberIn, string cityIn, int idIn)
         {
-            return View();
+            var person = _persons.Find(p => p.Id == idIn);
+
+            person.Name = nameIn;
+            person.City = cityIn;
+            person.PhoneNumber = phoneNumberIn;
+
+            return RedirectToAction("Index");
         }
         // GET: Person/Create
         public ActionResult Create()

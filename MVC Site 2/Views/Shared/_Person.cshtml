@@ -7,8 +7,10 @@
         {
             <div id="@item.Id">
                 <h3 class="bg-primary">@item.Name</h3>
-                <span>@item.City</span><br />
-                <span>@item.PhoneNumber @item.Id</span><br />
+                <div class="well">
+                    <span class="textPresent"><strong>Home City:</strong> @item.City</span><br />
+                    <span class="textPresent"><strong>Phone Nmb:</strong> @item.PhoneNumber</span><br />
+                </div>
 
                 @using (Ajax.BeginForm("Edit", new AjaxOptions()
                 {
@@ -17,6 +19,7 @@
                     UpdateTargetId = item.Id.ToString()
                 }))
                 {
+                    <input type="hidden" name="idIn" value="@item.Id" />
                     <input type="submit" value="Edit" class="btn btn-default btn-sm" />
 
                 }
