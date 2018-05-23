@@ -12,8 +12,10 @@ namespace MVC_Site_2.Controllers
         // GET: Person
         public ActionResult Index(string searchTerm = null, string searchCriteria = null, string alpha = null)
         {
+            //Sorterar listan som ska visas för användaren
             var model = Search.SearchList(searchTerm, searchCriteria, alpha, _persons);
 
+            //Ser till att hela sidan inte uppdateras nnär en Ajax request skickas 
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_Person", model);
@@ -22,14 +24,10 @@ namespace MVC_Site_2.Controllers
             return View(model);
         }
 
-        public ActionResult Change()
-        {
-            return PartialView("_Change");
-        }
-
         [HttpGet]
         public ActionResult Edit(int Id)
         {
+            //Letar upp i "databasen" vilket element du vill ändra på och lämnar tillbaka en partial view för att ändra den.
             var person = _persons.Find(p => p.Id == Id);
 
             return PartialView("_Edit", person);
@@ -38,10 +36,13 @@ namespace MVC_Site_2.Controllers
         [HttpPost]
         public ActionResult Edit(Person personIn)
         {
+            //Kollar så att det faktiskt är en fungerande person som kommer in xD.
             if (ModelState.IsValid)
             {
+                //Sätter den inkommande personens Id till ett högre än den sista i "databasen". Detta då personen som kommer in inte kommer att ha ett Id
                 var person = _persons.Find(p => p.Id == personIn.Id);
 
+                //Ändrar bara den utplockade spelarens properties
                 person.Name = personIn.Name;
                 person.City = personIn.City;
                 person.PhoneNumber = personIn.PhoneNumber; 
@@ -63,6 +64,7 @@ namespace MVC_Site_2.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    //Lägger till Id då användaren inte kan ge den inkommande person ett Id
                     var p = _persons.Last();
                     person.Id = p.Id + 1;
                     _persons.Add(person);
@@ -78,6 +80,7 @@ namespace MVC_Site_2.Controllers
 
         public ActionResult Delete(int Id)
         {
+            //Letar upp vilken spelare det är du vill ta bort och tar sedan bort den och uppdaterar listan
             var person = _persons.Find(p => p.Id == Id);
             _persons.Remove(person);
 
@@ -105,7 +108,7 @@ namespace MVC_Site_2.Controllers
         //}
 
 
-
+        //"Databasen"
         static List<Person> _persons = new List<Person>
         {
             new Person

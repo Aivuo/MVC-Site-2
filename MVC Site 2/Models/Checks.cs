@@ -9,6 +9,7 @@ namespace MVC_Site_2.Models
     {
         public static string HaveFeverCheck(string scale, float temperature)
         {
+            //Skapar en string sätter den till ett värde beroende på vilken temperatur användaren skriver in. Sen skickar den tillbaka den.
             string haveFever;
 
             if (scale == "celsius")

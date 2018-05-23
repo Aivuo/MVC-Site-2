@@ -8,6 +8,9 @@ namespace MVC_Site_2.Models
 {
     public class Person
     {
+
+        //Har pillat med Requirements och de är styrkta men de visas inte för användaren om de inte uppfylls.
+        //De läggs bara inte in i "databasen"
         public int Id { get; set; }
 
         [Required(ErrorMessage = "You need to enter a name")]
