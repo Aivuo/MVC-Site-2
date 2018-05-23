@@ -12,43 +12,7 @@ namespace MVC_Site_2.Controllers
         // GET: Person
         public ActionResult Index(string searchTerm = null, string searchCriteria = null, string alpha = null)
         {
-            IEnumerable<Person> model;
-
-            if (searchTerm == null && searchCriteria == null && alpha == null)
-            {
-                model = _persons
-                        .OrderBy(p => p.Id);
-            }
-            else if (searchCriteria == "Name")
-            {
-                if (alpha == null || alpha == "Descending")
-                {
-                    model = _persons
-                    .OrderByDescending(p => p.Name)
-                    .Where(p => searchTerm == null || p.Name.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
-                }
-                else
-                {
-                    model = _persons
-                            .OrderBy(p => p.Name)
-                            .Where(p => searchTerm == null || p.Name.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
-                }
-            }
-            else
-            {
-                if (alpha == null || alpha == "Descending")
-                {
-                    model = _persons
-                            .OrderByDescending(p => p.City)
-                            .Where(p => searchTerm == null || p.City.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
-                }
-                else
-                {
-                    model = _persons
-                           .OrderBy(p => p.City)
-                           .Where(p => searchTerm == null || p.City.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
-                }
-            }
+            var model = Search.SearchList(searchTerm, searchCriteria, alpha, _persons);
 
             if (Request.IsAjaxRequest())
             {
@@ -102,16 +66,6 @@ namespace MVC_Site_2.Controllers
                     var p = _persons.Last();
                     person.Id = p.Id + 1;
                     _persons.Add(person);
-                    //var p = _persons.Last();
-
-
-                    //_persons.Add(new Person
-                    //{
-                    //    Id = p.Id + 1,
-                    //    Name = person.Name,
-                    //    City = person.City,
-                    //    PhoneNumber = person.PhoneNumber
-                    //}); 
                 }
 
                 return RedirectToAction("Index");
