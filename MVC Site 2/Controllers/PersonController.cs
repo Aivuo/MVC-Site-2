@@ -15,7 +15,7 @@ namespace MVC_Site_2.Controllers
             //Sorterar listan som ska visas för användaren
             var model = Search.SearchList(searchTerm, searchCriteria, alpha, _persons);
 
-            //Ser till att hela sidan inte uppdateras nnär en Ajax request skickas 
+            //Ser till att hela sidan inte uppdateras när en Ajax request skickas 
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_Person", model);
@@ -28,9 +28,14 @@ namespace MVC_Site_2.Controllers
         public ActionResult Edit(int Id)
         {
             //Letar upp i "databasen" vilket element du vill ändra på och lämnar tillbaka en partial view för att ändra den.
-            var person = _persons.Find(p => p.Id == Id);
+            if (ModelState.IsValid)
+            {
+                var person = _persons.Find(p => p.Id == Id);
 
-            return PartialView("_Edit", person);
+                return PartialView("_Edit", person); 
+            }
+
+            return View();
         }
 
         [HttpPost]

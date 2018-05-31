@@ -64,10 +64,16 @@ C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\System.Web.Webpages.De
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\System.Web.Webpages.Razor.xml
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\System.Web.Helpers.xml
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\System.Web.Mvc.xml
-C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.csprojResolveAssemblyReference.cache
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.csproj.CoreCompileInputs.cache
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.csproj.CopyComplete
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.dll
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.pdb
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\roslyn\Microsoft.Managed.Core.targets
 C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.csprojAssemblyReference.cache
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\EntityFramework.dll
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\EntityFramework.SqlServer.dll
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\EntityFramework.xml
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\bin\EntityFramework.SqlServer.xml
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC_Site_2.Migrations.InitialCreate.resources
+C:\Users\Lexicon\Desktop\GitHub\MVC Site 2\MVC Site 2\obj\Debug\MVC Site 2.csproj.GenerateResource.cache

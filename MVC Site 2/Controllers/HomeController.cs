@@ -9,12 +9,15 @@ namespace MVC_Site_2.Controllers
 {
     public class HomeController : Controller
     {
+
+        MovieDb _db = new MovieDb();
         // GET: Home
         public ActionResult Index()
         {
+            var model = _db.Movies.ToList();
             ViewBag.Message = "You start here";
 
-            return View();
+            return View(model);
         }
 
         public ActionResult About()
@@ -122,6 +125,15 @@ namespace MVC_Site_2.Controllers
             Session["guessCorrect"] = guessCorrect;
             Session["isItCorrect"] = isItCorrect;
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_db != null)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
